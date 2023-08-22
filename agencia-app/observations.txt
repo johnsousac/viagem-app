@@ -1,0 +1,40 @@
+Subir sistema quarkus no modo dev
+---------------------------------
+mvn quarkus:dev
+Observação: quando fazemos alterações elas ficaram imediatamente disponíveis.
+
+Realizar requisição http verbo GET com curl
+-------------------------------------------
+curl localhost:8080/hello
+
+Realizar requisição http verbo POST com curl
+--------------------------------------------
+curl -d '{"nome": "John Castro de Sousa"}' -H "Content-Type: application/json" http://localhost:8080/clientes
+
+Mais informações sobre o Panache
+---------------------------------
+
+Panache é a implementação Hibernate no Quarkus pórem mais simplificada, simplificada não no sentido de ter menos features, mas no sentido de deixar a vida do programador mais "fácil"
+
+Panache é semelhante ao JpaRepository no mundo Spring Boot.
+
+Como adicionar extensões (novas dependências)
+---------------------------------------------
+
+1. Entrar no site da Quarkus (semelhante ao spring initializr), obter o identificador da extensão que será adicionada no projeto e digitar o seguinte comando na raiz da pasta do projeto, exemplo:
+
+mvn quarkus:add-extension -Dextension="quarkus-hibernate-orm-panache"
+
+Observação: No caso foi adicionado a extensão Panache Hibernate
+
+Panache com gerenciamento de ID e sem gerenciamento de ID automatico
+--------------------------------------------------------------------
+
+A classe que extender a classe PanacheEntity terá o ID gerenciado automaticamente, caso seja necessário realizar o gerenciamento de ID manualmente podemos extender a classe PanacheEntityBase.
+
+Serialização JSON
+-----------------
+
+É preciso adicionar a dependência Resteasy Classic JSON-B para ocorrer a serialização dos dados em JSON no controller.
+
+
